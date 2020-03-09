@@ -21,5 +21,15 @@
     border-radius: 10px;
     text-align: center;
     padding: 10px;
-    
+}
+
+.navFont a{
+    color: white;
+    font-size: 25px;
+
+}
+
+.active a{
+    color: rgb(137, 125, 246);
+    font-size: 28px;
 }
