@@ -1,56 +1,56 @@
 <div class="container col-lg-11">
-			<nav class="navbar navbar-expand-lg navbar-dark navCom">
-            <div style="margin-right:10px">
-           <img src="images/Blason_Colligny.png" alt="" style="width:50px;height:50px">
-           <img src="images/Blason_Maizery.svg.png" alt="" style="width:38px;height:48px">
-        </div>
-				<a class="navbar-brand" href="{{ path ('home') }}">Commune de Colligny-Maizery</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+	<nav class="navbar navbar-expand-xl navbar-dark navCom">
+		<div style="margin-right:10px">
+			<img src="images/Blason_Colligny.png" alt="" style="width:50px;height:50px">
+			<img src="images/Blason_Maizery.svg.png" alt="" style="width:38px;height:48px">
+		</div>
+		<a class="navbar-brand" href="{{ path ('home') }}">Commune de Colligny-Maizery</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'home' %}active{% endif %}">
-                        <div class="navComElem navbar-dark">
-							<a href="{{ path ('home') }}">Accueil</a>
-                            </div>
-						</li>
-						<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'actualite' %}active{% endif %}">
-                        <div class="navComElem navbar-dark">
-							<a href="{{ path ('actualite') }}">Actualité</a>
-                            </div>
-						</li>
-						<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'evenement' %}active{% endif %}">
-                        <div class="navComElem navbar-dark">
-							<a href="{{ path ('evenement') }}">Evènement</a>
-                            </div>
-						</li>
-						<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'ecole' %}active{% endif %}">
-                        <div class="navComElem navbar-dark">
-							<a href="{{ path ('ecole') }}">Ecole</a>
-                            </div>
-						</li>
-						<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'histoire' %}active{% endif %}">
-                        <div class="navComElem navbar-dark">
-							<a href="{{ path ('histoire') }}">Histoire</a>
-                            </div>
-						</li>
-						<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
-                        <div class="navComElem navbar-dark">
-							<a href="{{ path ('contact') }}">Contact</a>
-                            </div>
-						</li>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'home' %}active{% endif %}">
+					<div class="navComElem navbar-dark">
+						<a href="{{ path ('home') }}">Accueil</a>
+					</div>
+				</li>
+				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'actualite' %}active{% endif %}">
+					<div class="navComElem navbar-dark">
+						<a href="{{ path ('actualite') }}">Actualité</a>
+					</div>
+				</li>
+				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'evenement' %}active{% endif %}">
+					<div class="navComElem navbar-dark">
+						<a href="{{ path ('evenement') }}">Evènement</a>
+					</div>
+				</li>
+				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'ecole' %}active{% endif %}">
+					<div class="navComElem navbar-dark">
+						<a href="{{ path ('ecole') }}">Ecole</a>
+					</div>
+				</li>
+				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'histoire' %}active{% endif %}">
+					<div class="navComElem navbar-dark">
+						<a href="{{ path ('histoire') }}">Histoire</a>
+					</div>
+				</li>
+				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
+					<div class="navComElem navbar-dark">
+						<a href="{{ path ('contact') }}">Contact</a>
+					</div>
+				</li>
 
-					</ul>
-					{% if app.user %}
+			</ul>
+			{% if app.user %}
 
-						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a>
-							</li>
-						</ul>
-					{% endif %}
-				</div>
-			</nav>
-	</div>	
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a>
+					</li>
+				</ul>
+			{% endif %}
+		</div>
+	</nav>
+</div>

@@ -3,7 +3,7 @@
     background-image:url(../images/colligny-maizery.png) ;
     background-size: cover;
     background-position: center 40%;
-    height: 350px;
+    height: 300px;
     width: 100%;
     border-radius: 20px;
     
@@ -32,4 +32,51 @@
 .active a{
     color: rgb(137, 125, 246);
     font-size: 28px;
+}
+
+.meteo-title{
+    margin-left: 15px;
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.card-meteo{
+    border-radius: 10px;
+    background-image:url(../images/background_meteo.jpg);
+    background-size: cover;
+    height: 350px;
+}
+
+.thermo{
+    margin: 4px;
+    background-image:url(../images/thermo.png);
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+}
+
+.meteo-fleche{
+
+    font-size:25px;
+}
+
+.card-actu{
+
+    border-radius: 10px;
+    background-image:url(../images/actu.jpg) ;
+    background-size: cover;
+    height: 350px;
+    width: 100%;
+}
+
+.meteo-option{
+
+    font-weight: bold;
+}
+
+.card-corp{
+
+    height: 60%;
+
 }

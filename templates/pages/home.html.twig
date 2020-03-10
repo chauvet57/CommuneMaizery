@@ -3,64 +3,96 @@
 {% block title "communeDeMaizery" %}
 
 {% block body %}
-<br>
- <div class="homeBanniere flex-column container col-lg-11">
-   
-   </div>
-	
-		<br>
-		{% include 'navbar.html.twig' %}
-<br>
-	<div class="container col-lg-11">
-				<div class="row flex ">
-					
-					<div class="col-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">
-								<p>Actualité</p>
-								</h5>
-								<p class="card-text"></p>
-								<div class="text-primary text-right" style="font-weight:Bold;font-size: 1.5rem;"><a href="{{ path ('actualite') }}"> Lire l'article</a> </div>
-							</div>
-						</div>
-					</div>
-					<div class="col-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">
-								<p>Evènement</p>
-								</h5>
-								<p class="card-text"></p>
-								<div class="text-primary text-right" style="font-weight:Bold;font-size: 1.5rem;"><a href="{{ path ('evenement') }}"> Lire l'article</a> </div>	
-							</div>
-						</div>
-					</div>
-					<div class="col-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">
-								<p>Ecole</p>
-								</h5>
-								<p class="card-text"></p>
-								<div class="text-primary text-right" style="font-weight:Bold;font-size: 1.5rem;"><a href="{{ path ('ecole') }}"> Lire l'article</a> </div>
-							</div>
-						</div>
-					</div>
-					<div class="col-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">
-								<a></a>
-								</h5>
-								<p class="card-text"></p>
-								
-							</div>
-						</div>
-					</div>
-	</div>
+	<br>
+	<div class="homeBanniere flex-column container col-xl-11"></div>
 
+	<br>
+	{% include 'navbar.html.twig' %}
+	<br>
+	<div class="container col-xl-11">
+		<div class="row flex ">
+
+			<div class="col-xl-3 ">
+				<div class="card ">
+					<div class="card-body card-actu">
+						<h4 class="card-title ">
+							<p>Actualité</p>
+						</h4>
+						<p class="card-text"></p>
+						<div class="text-primary text-right" style="font-weight:Bold;font-size: 1.5rem;">
+							<a href="{{ path ('actualite') }}">
+								Lire l'article
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">
+							<p>Evènement</p>
+						</h4>
+						<p class="card-text"></p>
+						<div class="text-primary text-right" style="font-weight:Bold;font-size: 1.5rem;">
+							<a href="{{ path ('evenement') }}">
+								Lire l'article</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">
+							<p>Ecole</p>
+						</h4>
+						<p class="card-text"></p>
+						<div class="text-primary text-right" style="font-weight:Bold;font-size: 1.5rem;">
+							<a href="{{ path ('ecole') }}">
+								Lire l'article</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3">
+				<div class="card card-meteo">
+					<div class="card-body">
+
+						<div class="row ">
+							<div class="col-6">
+								<div>
+									<p class="meteo-title">{{ name }} ({{ country }})</p>
+								</div>
+									<p class="meteo-option" style="font-size:20px">{{ dt }}</p>
+									<p class="meteo-option">{{ time }}</p>
+									<p class="meteo-option">Pression : {{ pressure }} hPa</p>
+									<p class="meteo-option">Humidité : {{ humidity }} %</p>
+									<p class="meteo-option">Vent : {{ speed }} m/s</p>
+									<p class="meteo-option">Orientation : {{ deg }} °</p>
+
+							</div>
+							<div class="col-6">
+								<div class="row">
+									<div class=" text-center">
+										<p class="meteo-fleche meteo-option">&#8681;° {{ temp_min }}</p>
+									</div>
+									<div class="thermo"></div>
+									<div class="text-center">
+										<p class="meteo-fleche meteo-option">&#8679;° {{ temp_max }}</p>
+									</div>
+								</div>
+								<div>
+									<img style="height:120px" src="http://openweathermap.org/img/wn/{{ icon }}@2x.png" alt="">
+									<p class="meteo-option" style="font-size:30px">{{ description }}</p>
+									<p class="meteo-option" style="font-size:50px">{{ temp }} °C</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
 				</div>
 
-{% endblock %}
+			</div>
 
+		{% endblock %}
