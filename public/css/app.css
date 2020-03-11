@@ -80,3 +80,14 @@
     height: 60%;
 
 }
+
+#map { 
+    position:absolute; 
+    width: 100%;
+    height: 100%; 
+}
+
+.contact-option{
+
+    font-weight: bold;    
+}
