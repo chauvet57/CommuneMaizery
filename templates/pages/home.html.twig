@@ -15,9 +15,12 @@
 			<div class="col-xl-3 ">
 				<div class="card ">
 					<div class="card-body card-actu">
-						<h4 class="card-title ">
-							<p>Actualité</p>
-						</h4>
+						<h4 class="card-title "><p>Actualité</p></h4>
+							{% for activite in activites %}
+								<div>
+									{% include "pages/_activite.html.twig" %}
+								</div>	
+							{% endfor %}
 						<p class="card-text"></p>
 						<div class="text-primary text-right" style="font-weight:Bold;font-size: 1.5rem;">
 							<a href="{{ path ('actualite') }}">

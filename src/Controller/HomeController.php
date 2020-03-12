@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Twig\Environment;
+use App\Repository\ActiviteRepository;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +14,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      * @return Response
+     * @param ActiviteRepository
      */
-    public function index(): Response
+    public function index(ActiviteRepository $activite): Response
     { 
+        $activites = $activite->findLatest();
+
         $client = HttpClient::create();
         $response = $client->request('GET', 'http://api.openweathermap.org/data/2.5/weather?q=Maizery&APPID=aa6f01998a94918df2f823d6a4e54a40&units=metric&lang=fr');
 
@@ -59,7 +63,8 @@ class HomeController extends AbstractController
             'speed' => $speed,
             'deg' => $deg,
             'dt' => $dt,
-            'time' => $time
+            'time' => $time,
+            'activites' => $activites
 
         ]);
     

@@ -1,0 +1,27 @@
+
+
+{% apply inline_css %}
+    <style>
+        {# here, define your CSS styles as usual #}
+        .titre {
+            color: black;
+            text-align: center;
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        body {
+          background-color: rgb(189, 187, 187);
+         
+        }
+    </style>
+
+<body>
+   <p class="titre">Mail reçu de : {{ contact.Nom }}</p>
+</body>
+   
+    
+{% endapply %}
+
+
+
