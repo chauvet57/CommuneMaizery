@@ -2,12 +2,8 @@
 
 namespace App\Controller;
 
-
-use App\Entity\Property;
-use App\Form\PropertyType;
+use App\Entity\Activite;
 use App\Repository\ActiviteRepository;
-
-use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminController extends AbstractController
 {
   /**
-   * @var ActiviteRepository
+   * @var $repository
    */
     private $repository;
 
@@ -33,9 +29,37 @@ class AdminController extends AbstractController
      */
     public function index()
     {
-        $properties = $this->repository->findAll();
+        $activites = $this->repository->findAll();
         return $this->render( 'admin/index.html.twig', compact('activites'));
     }
+
+
+
+
+
+
+
+
+    /**
+     * @Route("/admin/edit{id}", name="admin.edit", methods="GET|POST")
+     * @param Activite $activite
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit(Activite $activite, Request $request)
+    {
+       //$form =  $this->createForm(activiteType::class, $activite);
+       //$form-> handleRequest($request);
+
+        //if ($form->isSubmitted() && $form->isValid()) {
+        //    $this->em->flush();
+        //    $this->addFlash('success','Bien modifié avec succès');
+         //   return $this->redirectToRoute('admin.index');
+        //}
+
+        return $this->render( 'admin/edit.html.twig');
+    }
+
 
 
 

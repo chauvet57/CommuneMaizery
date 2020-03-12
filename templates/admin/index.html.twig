@@ -1,11 +1,16 @@
 {% extends 'base.html.twig'%}
 
-{% block title "Gérer les biens" %}
+{% block title "Gérer les activitees" %}
 
 {% block body %}
+    <br>
+	<div class="homeBanniere flex-column container col-xl-11"></div>
+
+	<br> 
+    {% include 'admin/AdminNavBar.html.twig' %}
 	<div class="container mt-4">
-    
-<h1>Gérer les biens</h1>
+   
+<h1>Gérer les activitées</h1>
 
 {% for message in app.flashes('success') %}
     <div class="alert alert-success">
@@ -26,8 +31,8 @@
                 <tr>
                     <td>{{ Activite.Titre }}</td>
                     <td>
-                    <a href="{{ path ('admin.property.edit', {id: Activite.id}) }}" class="btn btn-secondary">Editer</a>
-                    <form method="post" action="{{ path ('admin.property.delete', {id: Activite.id}) }}" style="display:inline-block"
+                      <a href="{{ path ('admin.edit', {id: Activite.id}) }}" class="btn btn-secondary">Editer</a>
+                    <form method="post" action="{{ path ('admin.edit', {id: Activite.id}) }}" style="display:inline-block"
                     onsubmit="return confirm('Êtes vous vraiment sûr ?')">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Activite.id ) }}">
@@ -39,9 +44,7 @@
         </tbody>
     </table>
 
-<div class="text-right">
-<a href="{{ path ('admin.activite.new') }}" class="btn btn-primary">Créer un nouveau bien</a>
-</div>
+
 
     </div>
 	

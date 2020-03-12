@@ -1,64 +1,62 @@
 <?php
-
+ 
 namespace App\Entity;
-
-use Serializable;
-use App\Entity\Acces;
+ 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Role\Role;
+use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+ 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AccesRepository")
  */
 class Acces implements UserInterface,Serializable
 {
-    /**
+        /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
-
+ 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
-    private $Nom;
-
+    private $username;
+ 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
-    private $Mot_de_passe;
-
+    private $password;
+ 
     public function getId(): ?int
     {
         return $this->id;
     }
-
-    public function getNom(): ?string
+ 
+    public function getUsername(): ?string
     {
-        return $this->Nom;
+        return $this->username;
     }
-
-    public function setNom(string $Nom): self
+ 
+    public function setUsername(string $username): self
     {
-        $this->Nom = $Nom;
-
+        $this->username = $username;
+ 
         return $this;
     }
-
-    public function getMotDePasse(): ?string
+ 
+    public function getPassword(): ?string
     {
-        return $this->Mot_de_passe;
+        return $this->password;
     }
-
-    public function setMotDePasse(string $Mot_de_passe): self
+ 
+    public function setPassword(string $password): self
     {
-        $this->Mot_de_passe = $Mot_de_passe;
-
+        $this->password = $password;
+ 
         return $this;
     }
-
+ 
     /**
      * Returns the roles granted to the user.
      *
@@ -73,11 +71,11 @@ class Acces implements UserInterface,Serializable
      *
      * @return (Role|string)[] The user roles
      */
-    public function getRoles(){
-
+    public function getRoles()
+    {
         return ['ROLE_ADMIN'];
     }
-
+ 
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -85,31 +83,32 @@ class Acces implements UserInterface,Serializable
      *
      * @return string|null The salt
      */
-    public function getSalt(){
-
+    public function getSalt()
+    {
         return null;
     }
-
+ 
     public function eraseCredentials()
     {
-        
+ 
     }
+ 
     public function serialize()
     {
-      return serialize([
-
-          $this->id,
-          $this->Nom,
-          $this->Mot_de_passe
-      ]);  
-    }
-
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password
+        ]);
+    } 
+ 
     public function unserialize($serialized)
     {
         list(
             $this->id,
-            $this->Nom,
-            $this->Mot_de_passe
-        ) = unserialize($serialized,['allowed_classes' => false]);
+            $this->username,
+            $this->password
+        ) = unserialize($serialized, ['allowed_classes' => false]);
     }
+ 
 }
