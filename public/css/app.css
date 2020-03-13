@@ -99,3 +99,26 @@
     text-align: center;
     border-radius: 10px;
 }
+
+.btnAdmin{
+
+    background-color: rgb(80, 78, 78);
+    color: beige;
+    font-size: 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
+    width: 220px;
+}
+
+.background-site{
+
+    background-color: rgb(202, 202, 202);
+}
+
+.card-login{
+    background-color: rgb(156, 156, 156);
+    border-radius: 10px;
+
+}

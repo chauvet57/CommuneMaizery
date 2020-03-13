@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -23,8 +24,12 @@ class ActiviteType extends AbstractType
         $builder
             ->add('Titre', TextType::class)
             ->add('Description', TextareaType::class)
-            ->add('Date_debut', DateTimeType::class)
-            ->add('Date_fin', DateTimeType::class)
+            ->add('Date_debut', DateType::class,[
+                'format' => 'd-M-y'
+            ])
+            ->add('Date_fin', DateType::class,[
+                'format' => 'd-M-y'
+            ])
             ->add('Fichier_image', FileType::class,[
                 'required' => false ])
             ->add('Type', EntityType::class,[

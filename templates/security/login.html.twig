@@ -6,23 +6,34 @@
 	
 	<div class="container mt-4">
 
-	{% if error %}
-	<div class="alert alert-danger">
-	{{ error.messageKey | trans(error.messagedata, 'security') }}
-	</div>
-	{% endif %}
+		<div class="card container col-6 card-login">
 
-	<form action="{{ path ('login')}}" method="POST">
-		<div class="form-group">
-			<label for="username">Nom d'utilisateur</label>
-			<input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}">
+		<div class="card-title homeBanniere mt-5">
+		
 		</div>
-        <div class="form-group">
-			<label for="password">Mot de passe</label>
-			<input type="password" id="password" name="_password" class="form-control">
-		</div>
-        <button type="submit" class="btn btn-primary">Se connecter</button>
-	</form>
-	
+			<div class="card-body ">
+
+				<form action="{{ path ('login')}}" method="POST">
+					<div class="container text-center">
+						<div class="form-group message-success" >
+							<label for="username">Nom d'utilisateur</label>
+							<input type="text" id="username" name="_username" class="form-control message-success" value="{{ last_username }}">
+						</div>
+						<div class="form-group message-success">
+							<label for="password">Mot de passe</label>
+							<input type="password" id="password" name="_password" class="form-control message-success">
+						</div>
+					</div>		
+					<div class="text-center">
+						<button type="submit" class="btn btn-success mt-2 mb-3 message-success">Se connecter</button>
+								{% if error %}
+									<div class="alert alert-danger container">
+										{{ error.messageKey | trans(error.messagedata, 'security') }}
+									</div>
+								{% endif %}
+					</div>
+				</form>
+			</div>	
+		</div>	
 	</div>
 {% endblock %}

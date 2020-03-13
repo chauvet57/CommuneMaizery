@@ -26,11 +26,62 @@ class ActiviteRepository extends ServiceEntityRepository
      */
     public function findAllVisibleQuery(): Query
     {
-
         return $this->findVisibleQuery()
             ->getQuery();
            
     }
+
+
+
+    /**
+     * @return Activite[] 
+     */
+    public function findAllActualite(): array
+    {
+        return $this->findVisibleQueryActualite()
+        ->getQuery()
+        ->getResult();
+    }
+
+    private function findVisibleQueryActualite(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+        ->where('p.Type = 1');
+    }
+
+
+      /**
+     * @return Activite[] 
+     */
+    public function findAllEvenement(): array
+    {
+        return $this->findVisibleQueryEvenement()
+        ->getQuery()
+        ->getResult();
+    }
+
+    private function findVisibleQueryEvenement(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+        ->where('p.Type = 2');
+    }
+
+      /**
+     * @return Activite[] 
+     */
+    public function findAllEcole(): array
+    {
+        return $this->findVisibleQueryEcole()
+        ->getQuery()
+        ->getResult();
+    }
+
+    private function findVisibleQueryEcole(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+        ->where('p.Type = 3');
+    }
+
 
     /**
      * @return Activite[] 

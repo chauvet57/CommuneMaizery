@@ -11,33 +11,28 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-                <li class="nav-item col-6">
-					<div class="navComElem navbar-dark navFont">
-						<a href="#">Actualité</a>
-					</div>
+               {% for type in types %} 
+				 <li class="nav-item ">
+					<form method="GET" class="col">
+						<input type="hidden" name="_method" value="{{ type.id }}">
+						<input type="submit" class="btn btnAdmin" value="{{ type.Nom }}">
+					</form>
 				</li>
-                	<li class="nav-item col-6">
-					<div class="navComElem navbar-dark navFont">
-						<a href="#">Evenement</a>
-					</div>
+              
+				{% endfor %}  
+				<li class="nav-item ">
+					<form action="" method="post" class="col">
+						<input type="hidden" name="_method" value="info">
+						<button type="submit" class="btn btnAdmin" >Info</button>
+					</form>
 				</li>
-                	<li class="nav-item col-6">
-					<div class="navComElem navbar-dark navFont">
-						<a href="#">Ecole</a>
-					</div>
-				</li>
-				<li class="nav-item col-6">
-					<div class="navComElem navbar-dark navFont">
-						<a href="#">Info</a>
-					</div>
-				</li>
-
+			 
 			</ul>
 			{% if app.user %}
 
 				<ul class="navbar-nav">
-					<li class="nav-item col">
-                        <div class="navComElem navbar-dark navFont">
+					<li class="nav-item">
+                        <div class="btn btnAdmin">
 						    <a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a>
                         </div>
 					</li>

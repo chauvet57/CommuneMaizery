@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Type;
 use App\Entity\Activite;
 use App\Form\ActiviteType;
+use App\Repository\TypeRepository;
 use App\Repository\ActiviteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,10 +19,12 @@ class AdminController extends AbstractController
    * @var $repository
    */
     private $repository;
+    private $activiteType;
 
-    public function __construct(ActiviteRepository $repository, EntityManagerInterface $em)
+    public function __construct(ActiviteRepository $repository, TypeRepository $activiteType ,EntityManagerInterface $em)
     {
         $this->repository = $repository;
+        $this->activiteType = $activiteType;
         $this->em = $em;
     }
 
@@ -28,10 +32,40 @@ class AdminController extends AbstractController
      * @Route("/admin", name="index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index()
+    public function index(TypeRepository $type)
     {
+
+        if ($_GET["_method"] == 1) {
+            $type = $this->activiteType->findAll();
+            $activites = $this->repository->findAllActualite();
+            return $this->render( 'admin/index.html.twig',[
+                'types' => $type,
+                'activites' => $activites
+                ]);
+        }
+        if ($_GET["_method"] == 2) {
+            $type = $this->activiteType->findAll();
+            $activites = $this->repository->findAllEvenement();
+            return $this->render( 'admin/index.html.twig',[
+                'types' => $type,
+                'activites' => $activites
+                ]);
+        }
+        if ($_GET["_method"] == 3) {
+            $type = $this->activiteType->findAll();
+            $activites = $this->repository->findAllEcole();
+            return $this->render( 'admin/index.html.twig',[
+                'types' => $type,
+                'activites' => $activites
+                ]);
+        }
+
+        $type = $this->activiteType->findAll();
         $activites = $this->repository->findAll();
-        return $this->render( 'admin/index.html.twig', compact('activites'));
+        return $this->render( 'admin/index.html.twig',[
+            'types' => $type,
+            'activites' => $activites
+            ]);
     }
 
     /**
@@ -50,8 +84,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('index');
         }
                 return $this->render('admin/new.html.twig',[
-            'activite' =>$activite,
-            'form' =>$form->createView()
+                    'form' =>$form->createView()
         ]);
     }
 
@@ -73,7 +106,10 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('index');
         }
 
-        return $this->render( 'admin/edit.html.twig');
+        return $this->render( 'admin/edit.html.twig',[
+            'activite' =>$activite,
+            'form' =>$form->createView()
+        ]);
     }
 
     /**
@@ -93,11 +129,6 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('index');
     }
 
-
-
-
-
-    
     
 
 }
