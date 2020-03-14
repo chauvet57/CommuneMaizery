@@ -35,31 +35,6 @@ class AdminController extends AbstractController
     public function index(TypeRepository $type)
     {
 
-        if ($_GET["_method"] == 1) {
-            $type = $this->activiteType->findAll();
-            $activites = $this->repository->findAllActualite();
-            return $this->render( 'admin/index.html.twig',[
-                'types' => $type,
-                'activites' => $activites
-                ]);
-        }
-        if ($_GET["_method"] == 2) {
-            $type = $this->activiteType->findAll();
-            $activites = $this->repository->findAllEvenement();
-            return $this->render( 'admin/index.html.twig',[
-                'types' => $type,
-                'activites' => $activites
-                ]);
-        }
-        if ($_GET["_method"] == 3) {
-            $type = $this->activiteType->findAll();
-            $activites = $this->repository->findAllEcole();
-            return $this->render( 'admin/index.html.twig',[
-                'types' => $type,
-                'activites' => $activites
-                ]);
-        }
-
         $type = $this->activiteType->findAll();
         $activites = $this->repository->findAll();
         return $this->render( 'admin/index.html.twig',[
@@ -129,6 +104,38 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('index');
     }
 
-    
+/**
+     * @Route("/admin/{type}", name="admin.type",methods="GET|POST")
+     * @param Type $type
+     * 
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function trierType(){
+
+if ($_GET["_method"] == 1) {
+    $type = $this->activiteType->findAll();
+    $activites = $this->repository->findAllActualite();
+    return $this->render( 'admin/index.html.twig',[
+        'types' => $type,
+        'activites' => $activites
+        ]);
+}
+if ($_GET["_method"] == 2) {
+    $type = $this->activiteType->findAll();
+    $activites = $this->repository->findAllEvenement();
+    return $this->render( 'admin/index.html.twig',[
+        'types' => $type,
+        'activites' => $activites
+        ]);
+}
+if ($_GET["_method"] == 3) {
+    $type = $this->activiteType->findAll();
+    $activites = $this->repository->findAllEcole();
+    return $this->render( 'admin/index.html.twig',[
+        'types' => $type,
+        'activites' => $activites
+        ]);
+}
+    }
 
 }
