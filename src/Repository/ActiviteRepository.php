@@ -88,10 +88,13 @@ class ActiviteRepository extends ServiceEntityRepository
      */
     public function findLatest(): array
     {
-        return $this->findVisibleQuery()
-        ->setMaxResults(1)
-        ->getQuery()
-        ->getResult();
+        $activite = $this->findVisibleQuery()
+                    ->setMaxResults(3)            
+                    ->getQuery()
+                    ->getResult();
+        
+        return $activite;
+        
     }
 
     private function findVisibleQuery(): QueryBuilder

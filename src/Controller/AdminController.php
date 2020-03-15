@@ -104,6 +104,16 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('index');
     }
 
+     /**
+     * @Route("admin/info", name="admin/info")
+     * @return Response
+     */
+    public function info(): Response
+    {
+        
+        return $this->render('admin/info.html.twig');
+    }
+
 /**
      * @Route("/admin/{type}", name="admin.type",methods="GET|POST")
      * @param Type $type
@@ -136,6 +146,7 @@ if ($_GET["_method"] == 3) {
         'activites' => $activites
         ]);
 }
+
     }
 
 }

@@ -19,6 +19,7 @@ class NewLetterRepository extends ServiceEntityRepository
         parent::__construct($registry, NewLetter::class);
     }
 
+    
     // /**
     //  * @return NewLetter[] Returns an array of NewLetter objects
     //  */

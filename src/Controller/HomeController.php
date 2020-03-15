@@ -18,8 +18,9 @@ class HomeController extends AbstractController
      */
     public function index(ActiviteRepository $activite): Response
     { 
+        
         $activites = $activite->findLatest();
-
+            //var_dump($activites);
         $client = HttpClient::create();
         $response = $client->request('GET', 'http://api.openweathermap.org/data/2.5/weather?q=Maizery&APPID=aa6f01998a94918df2f823d6a4e54a40&units=metric&lang=fr');
 
@@ -43,7 +44,7 @@ class HomeController extends AbstractController
         $icon = $parsed_json->{'weather'}[0]->{'icon'};
         $descrip = $parsed_json->{'weather'}[0]->{'description'};
         $speed = $parsed_json->{'wind'}->{'speed'};
-        $deg = $parsed_json->{'wind'}->{'deg'};
+        //$deg = $parsed_json->{'wind'}->{'deg'};
         setlocale(LC_ALL,'fra_fra');
         $dt = strftime('%A %d %B %Y');
         $time = strftime('%X');
@@ -61,7 +62,7 @@ class HomeController extends AbstractController
             'description' => $descrip,
             'icon' => $icon,
             'speed' => $speed,
-            'deg' => $deg,
+            //'deg' => $deg,
             'dt' => $dt,
             'time' => $time,
             'activites' => $activites

@@ -20,7 +20,7 @@
     background-color: rgb(80, 78, 78);
     border-radius: 10px;
     text-align: center;
-    padding: 10px;
+    
 }
 
 .navFont a{
@@ -109,15 +109,48 @@
     font-weight: bold;
     margin: 5px;
     padding: 5px;
-    width: 220px;
+    border: none;
+    outline:none;
+    
 }
+
+.btnAdmin:hover{
+    color:#000000;
+    
+}
+
+.btnValide{
+
+    background-color: rgb(49, 136, 34);
+    color: beige;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    outline:none;
+    
+}
+
+.btnValide:hover{
+    color:#000000;
+    
+}
+
+
+
+
 
 .background-site{
 
     background-color: rgb(202, 202, 202);
 }
 
-.card-login{
+.card-style{
     background-color: rgb(156, 156, 156);
     border-radius: 10px;
 

@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use Twig\Environment;
 use App\Entity\Contact;
+use App\Entity\NewLetter;
 use App\Form\ContactType;
 use App\Form\NewLetterType;
 use Symfony\Component\Mime\Email;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -17,8 +19,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ContactController extends AbstractController
 { 
 
-public function __construct(Environment $renderer){
+public function __construct(Environment $renderer,EntityManagerInterface $em){
 
+    $this->em = $em;
     $this->renderer = $renderer;
 }
 
@@ -28,14 +31,22 @@ public function __construct(Environment $renderer){
      */
     public function index(Request $request,MailerInterface $mailer): Response
     {
+        $newLetter = new NewLetter();
         $contact = new Contact();
+
         $form = $this->createForm(ContactType::class,$contact);
-        $form-> handleRequest($request);
-
-        $formLetter = $this->createForm(NewLetterType::class);
-        $formLetter-> handleRequest($request);
-
+        $formLetter = $this->createForm(NewLetterType::class,$newLetter);
         
+        $formLetter-> handleRequest($request);
+        $form-> handleRequest($request);
+        
+        if($formLetter->isSubmitted() && $formLetter ->isValid() ){
+            $this->em->persist($newLetter);
+            $this->em->flush();
+            $this->addFlash('success','Vous etes inscrit a la newletter');
+            return $this->redirectToRoute('contact');
+        }
+
 
             if ($form->isSubmitted() && $form->isValid()) {
 
@@ -57,6 +68,7 @@ public function __construct(Environment $renderer){
                 return $this->redirect('/contact');
         
         }
+        
 
         return $this->render('pages/contact.html.twig',[
             'current_menu' => 'contact',
@@ -64,5 +76,9 @@ public function __construct(Environment $renderer){
             'formLetter' => $formLetter->createView()
         ]);
     }
+
+
+
+  
 
 }

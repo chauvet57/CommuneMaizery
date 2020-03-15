@@ -10,38 +10,49 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'home' %}active{% endif %}">
-					<div class="navComElem navbar-dark">
-						<a href="{{ path ('home') }}">Accueil</a>
+			<ul class="navbar-nav mr-auto col">
+				<li class="nav-item col navFont">
+					<div class="navComElem navbar-dark {% if current_menu is defined and current_menu == 'home' %}active{% endif %}">
+						<form action="{{ path ('home') }}">
+                       		<input type="submit" class="btnAdmin" value="Accueil">
+						</form>
 					</div>
 				</li>
-				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'actualite' %}active{% endif %}">
+				<li class="nav-item col navFont {% if current_menu is defined and current_menu == 'actualite' %}active{% endif %}">
 					<div class="navComElem navbar-dark">
-						<a href="{{ path ('actualite') }}">Actualité</a>
+						<form action="{{ path ('actualite') }}">
+                       		<input type="submit" class="btnAdmin" value="Actualité">
+						</form>
 					</div>
 				</li>
-				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'evenement' %}active{% endif %}">
+				<li class="nav-item col navFont {% if current_menu is defined and current_menu == 'evenement' %}active{% endif %}">
 					<div class="navComElem navbar-dark">
-						<a href="{{ path ('evenement') }}">Evènement</a>
+						<form action="{{ path ('evenement') }}">
+                       		<input type="submit" class="btnAdmin" value="Evènement">
+						</form>
 					</div>
 				</li>
-				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'ecole' %}active{% endif %}">
-					<div class="navComElem navbar-dark">
-						<a href="{{ path ('ecole') }}">Ecole</a>
+				<li class="nav-item col navFont">
+					<div class="navComElem navbar-dark {% if current_menu is defined and current_menu == 'ecole' %}active{% endif %}">
+						<form action="{{ path ('ecole') }}">
+                       		<input type="submit" class="btnAdmin" value="Ecole">
+						</form>
 					</div>
 				</li>
-				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'histoire' %}active{% endif %}">
+				<li class="nav-item col navFont {% if current_menu is defined and current_menu == 'histoire' %}active{% endif %}">
 					<div class="navComElem navbar-dark">
-						<a href="{{ path ('histoire') }}">Histoire</a>
+						<form action="{{ path ('histoire') }}">
+                       		<input type="submit" class="btnAdmin" value="Histoire">
+						</form>
 					</div>
 				</li>
-				<li class="nav-item col-lg-3 navFont {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
+				<li class="nav-item col navFont {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
 					<div class="navComElem navbar-dark">
-						<a href="{{ path ('contact') }}">Contact</a>
+						<form action="{{ path ('contact') }}">
+                       		<input type="submit" class="btnAdmin" value="Contact">
+						</form>
 					</div>
 				</li>
-
 			</ul>
 			
 		</div>
