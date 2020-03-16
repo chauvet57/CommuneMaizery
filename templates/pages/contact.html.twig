@@ -24,9 +24,9 @@
 				</div>
 				<div  class="col ml-5 mt-3 mb-3">
 					{{ form_start(form) }}
-					<div class="col contact-option">{{ form_row(form.Nom)}}</div>
-					<div class="col contact-option">{{ form_row(form.email)}}</div>
-					<div class="col contact-option">{{ form_rest(form)}}</div>
+					<div class="col option">{{ form_row(form.Nom)}}</div>
+					<div class="col option">{{ form_row(form.email)}}</div>
+					<div class="col option">{{ form_rest(form)}}</div>
 					<div class="form-group">
 						<button class="btnValide ml-3">{{ button| default('Envoyer') }}</button>
 					</div>
@@ -39,7 +39,7 @@
 <div class="container mt-5">
 	<div class="row">
 		<div class="col-sm">
-			<h4 class="contact-option">ECRIVEZ-NOUS</h4>
+			<h4 class="option">ECRIVEZ-NOUS</h4>
 
 			<p class="contact-option">Adresse :</p>
 			<p>Mairie de Colligny-Maizery</p>
@@ -48,25 +48,24 @@
 
 		</div>
 		<div class="col-sm">
-			<h4 class="contact-option">CONTACTEZ-NOUS</h4>
+			<h4 class="option">CONTACTEZ-NOUS</h4>
 
-			<p class="contact-option">Téléphone :</p>
+			<p class="option">Téléphone :</p>
 			<p>Colligny +33 3 87 64 53 17</p>
 			<p>Maizery + 33 3 87 64 47 28</p>
 
-			<p class="contact-option">Heures d'ouverture :</p>
-			<p class="contact-option">Colligny :</p>
+			<p class="option">Heures d'ouverture :</p>
 			<p>Lundi 10h à 12h et 13h à 19h</p>
 			<p>Jeudi 9h à 12h et 14h à 19h</p>
 		</div>
 		<div class="col-sm">
-			<h4 class="contact-option">ABONNEZ-VOUS!</h4>
+			<h4 class="option">ABONNEZ-VOUS!</h4>
 
 			<p>Saisissez votre adresse mail</p>
 			
 				{{ form_start(formLetter) }}
 				
-					<div class="col contact-option">{{ form_row(formLetter.email)}}
+					<div class="col option">{{ form_row(formLetter.email)}}
 						<div class="form-group">
 							<button class="btnValide ml-3" >{{ button| default('M\'abonner') }}</button>
 						</div>

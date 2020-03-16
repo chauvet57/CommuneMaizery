@@ -45,7 +45,7 @@
     border-radius: 10px;
     background-image:url(../images/background_meteo.jpg);
     background-size: cover;
-    height: 350px;
+    
 }
 
 .thermo{
@@ -64,9 +64,25 @@
 .card-actu{
 
     border-radius: 10px;
-    background-image:url(../images/actu.jpg) ;
+    background-image:url(../images/newsBack.jpg);
     background-size: cover;
-    height: 350px;
+    width: 100%;
+
+}
+
+.card-ecole{
+
+    border-radius: 10px;
+    background-image:url(../images/ecoleBack.jpg) ;
+    background-size: cover;
+    width: 100%;
+}
+
+.card-fete{
+
+    border-radius: 10px;
+    background-image:url(../images/feteBack.jpg) ;
+    background-size: cover;
     width: 100%;
 }
 
@@ -75,11 +91,7 @@
     font-weight: bold;
 }
 
-.card-corp{
 
-    height: 60%;
-
-}
 
 #map { 
     position:absolute; 
@@ -87,7 +99,7 @@
     height: 100%; 
 }
 
-.contact-option{
+.option{
 
     font-weight: bold;    
 }
@@ -141,9 +153,49 @@
     
 }
 
+.btnEdit{
 
+    background-color: rgb(34, 95, 136);
+    color: beige;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    outline:none;
+    
+}
 
+.btnEdit:hover{
+    color:#000000;
+    
+}
 
+.btnSupprimer{
+
+    background-color: #af3030;
+    color: beige;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    outline:none;
+    
+}
+
+.btnSupprimer:hover{
+    color:#000000;
+    
+}
 
 .background-site{
 
@@ -151,7 +203,27 @@
 }
 
 .card-style{
-    background-color: rgb(156, 156, 156);
+    background-color: rgb(211, 206, 206);
     border-radius: 10px;
 
+}
+
+.activite-option{
+
+    font-weight: bold;
+    font-size: 20px;    
+}
+
+.activite-titre{
+
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(0, 0, 0);    
+}
+
+.card-insert{
+
+    border-radius: 10px;
+    opacity: 80%;
+    background-color: rgb(170, 176, 182);
 }

@@ -14,7 +14,9 @@
             </div>
             <div class="col">
                 <div class="text-right">
-                    <a href="{{ path ('admin.new') }}" class="btn btn-primary">Créer une Activité</a>
+                    <form method="get" action="{{ path ('admin.new') }}" >
+                        <input type="submit" class="btnValide" value="Créer une Activité">
+                    </form>
                 </div>
             </div>
         </div>
@@ -44,14 +46,21 @@
                     <td>{{ Activite.Titre }}</td>
                     <td>{{ Activite.Type.getNom() }}</td>
                     <td>{{ Activite.Datedebut|date('d/m/Y') }}</td>
-                    <td>{{ Activite.Description|slice(0,40)|raw }} ...</td>
-                    <td>
-                      <a href="{{ path ('admin.edit', {id: Activite.id}) }}" class="btn btn-secondary">Editer</a>
+                    <td>{% if  Activite.Description|length < 40  %}
+                            {{ Activite.Description }} 
+                        {% else %}
+                            {{ Activite.Description|slice(0,40)|raw }} ... 
+                        {% endif %}
+                    </td>
+                    <td class="row">
+                    <form action="{{ path ('admin.edit', {id: Activite.id}) }}">
+                        <input type="submit" class="btnEdit" value="Editer">
+                    </form>
                     <form method="post" action="{{ path ('admin.delete', {id: Activite.id}) }}" style="display:inline-block"
                     onsubmit="return confirm('Êtes vous vraiment sûr ?')">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ Activite.id ) }}">
-                    <button class="btn btn-danger">Supprimer</button>
+                    <button class="btnSupprimer">Supprimer</button>
                     </form>
                     </td>
                 </tr>

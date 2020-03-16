@@ -31,7 +31,7 @@ class ActiviteRepository extends ServiceEntityRepository
            
     }
 
-
+ 
 
     /**
      * @return Activite[] 
@@ -43,9 +43,21 @@ class ActiviteRepository extends ServiceEntityRepository
         ->getResult();
     }
 
+    /**
+     * @return Activite[] 
+     */
+    public function findOneActualite(): array
+    {
+        return $this->findVisibleQueryActualite()
+        ->setMaxResults(1)
+        ->getQuery()
+        ->getResult();
+    }
+
     private function findVisibleQueryActualite(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
+        ->orderBy('p.id', 'DESC')
         ->where('p.Type = 1');
     }
 
@@ -58,11 +70,24 @@ class ActiviteRepository extends ServiceEntityRepository
         return $this->findVisibleQueryEvenement()
         ->getQuery()
         ->getResult();
+        
+    }
+
+     /**
+     * @return Activite[] 
+     */
+    public function findOneEvenement(): array
+    {
+        return $this->findVisibleQueryEvenement()
+        ->setMaxResults(1)
+        ->getQuery()
+        ->getResult();
     }
 
     private function findVisibleQueryEvenement(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
+        ->orderBy('p.id', 'DESC')
         ->where('p.Type = 2');
     }
 
@@ -76,9 +101,21 @@ class ActiviteRepository extends ServiceEntityRepository
         ->getResult();
     }
 
+      /**
+     * @return Activite[] 
+     */
+    public function findOneEcole(): array
+    {
+        return $this->findVisibleQueryEcole()
+        ->setMaxResults(1)
+        ->getQuery()
+        ->getResult();
+    }
+
     private function findVisibleQueryEcole(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
+        ->orderBy('p.id', 'DESC')
         ->where('p.Type = 3');
     }
 

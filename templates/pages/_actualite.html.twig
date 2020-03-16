@@ -1,0 +1,12 @@
+
+<div class="card card-body card-insert ">
+		<h5 class="card-title row">
+            <p class="activite-option">{{  actualite.Titre }} </p>
+            <p>({{  actualite.Datedebut|date('d/m/Y') }})</p>
+        </h5>
+        {% if  actualite.Description|length < 70 %}
+            <p class="card-text"><h4> {{  actualite.Description }}</h4> </p>
+        {% else %}
+            <p class="card-text"><h4> {{  actualite.Description|slice(0,70)|raw }} ...</h4> </p>
+        {% endif %}
+</div>

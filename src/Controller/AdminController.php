@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Type;
+use App\Entity\Horaire;
 use App\Entity\Activite;
+use App\Entity\Telephone;
+use App\Form\HoraireType;
 use App\Form\ActiviteType;
+use App\Form\TelephoneType;
 use App\Repository\TypeRepository;
 use App\Repository\ActiviteRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -108,10 +112,34 @@ class AdminController extends AbstractController
      * @Route("admin/info", name="admin/info")
      * @return Response
      */
-    public function info(): Response
+    public function info(Request $request): Response
     {
+        $telephone = new Telephone();
+        $horaire = new Horaire();
+
+        $form = $this->createForm(TelephoneType::class, $telephone);
+        $formHoraire = $this->createForm(HoraireType::class,$horaire);
+
+        $form -> handleRequest($request);
+        $formHoraire -> handleRequest($request);
+ 
+        if($form->isSubmitted() && $form ->isValid() ){
+            //$this->em->persist($telephone);
+            //$this->em->flush();
+            //$this->addFlash('success','Modifié avec succès');
+            return $this->redirect('info');
+        }
+        if($formHoraire->isSubmitted() && $formHoraire ->isValid() ){
+            //$this->em->persist($horaire);
+            //$this->em->flush();
+            //$this->addFlash('success','Modifié avec succès');
+            return $this->redirect('info');
+        }
         
-        return $this->render('admin/info.html.twig');
+        return $this->render('admin/info.html.twig',[
+            'form' =>$form->createView(),
+            'formHoraire' =>$formHoraire->createView()
+        ]);
     }
 
 /**

@@ -16,11 +16,13 @@ class HomeController extends AbstractController
      * @return Response
      * @param ActiviteRepository
      */
-    public function index(ActiviteRepository $activite): Response
+    public function index(ActiviteRepository $actualite,ActiviteRepository $ecole,ActiviteRepository $evenement): Response
     { 
         
-        $activites = $activite->findLatest();
-            //var_dump($activites);
+        $actualites = $actualite->findAllActualite();
+        $ecoles = $ecole->findOneEcole();
+        $evenements = $evenement->findOneEvenement();
+            
         $client = HttpClient::create();
         $response = $client->request('GET', 'http://api.openweathermap.org/data/2.5/weather?q=Maizery&APPID=aa6f01998a94918df2f823d6a4e54a40&units=metric&lang=fr');
 
@@ -65,7 +67,9 @@ class HomeController extends AbstractController
             //'deg' => $deg,
             'dt' => $dt,
             'time' => $time,
-            'activites' => $activites
+            'actualites' => $actualites,
+            'ecoles' => $ecoles,
+            'evenements' => $evenements
 
         ]);
     
