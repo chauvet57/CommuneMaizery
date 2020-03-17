@@ -19,6 +19,8 @@ class HoraireRepository extends ServiceEntityRepository
         parent::__construct($registry, Horaire::class);
     }
 
+    
+
     // /**
     //  * @return Horaire[] Returns an array of Horaire objects
     //  */

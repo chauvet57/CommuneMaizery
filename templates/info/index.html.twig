@@ -1,0 +1,68 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+
+<div class="container mt-4">
+
+<h1>Modifier Téléphone</h1>
+
+<table class="table table-striped container">
+        <thead>
+            <tr>
+                <th>Village</th>
+                <th>Telephone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            {% for Telephone in telephones %}
+                <tr>
+                    <td>{{ Telephone.Village }}</td>
+                    <td>{{ Telephone.numeroTelephone }}</td>
+                    
+                    <td class="row">
+                    <form action="{{ path ('info.telephone', {id: Telephone.id}) }}">
+                        <input type="submit" class="btnEdit" value="Editer">
+                    </form>
+                    </td>
+                </tr>
+            {% endfor %}   
+        </tbody>
+    </table>
+  
+<br>
+<h1>Modifier les horaires</h1>
+<table class="table table-striped container">
+        <thead>
+            <tr>
+                <th>Jour</th>
+                <th>Matin Ouverture</th>
+                <th>Matin Fermeture</th>
+                <th>Ap-Midi Ouverture</th>
+                <th>Ap-Midi Fermeture</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+           {% for Horaire in horaires %}
+                <tr>
+                    <td>{{ Horaire.Jour }}</td>
+                    <td>{{ Horaire.heureMatinOuverture }}</td>
+                    <td>{{ Horaire.heureMatinFermeture }}</td>
+                    <td>{{ Horaire.heureApresMidiOuverture }}</td>
+                    <td>{{ Horaire.heureApresMidiFermeture }}</td>
+                    <td class="row">
+                    <form action="{{ path ('info.horaire', {id: Horaire.id}) }}">
+                        <input type="submit" class="btnEdit" value="Editer">
+                    </form>
+                    </td>
+                </tr>
+             {% endfor %} 
+        </tbody>
+    </table>
+
+</div>  
+
+{% endblock %}

@@ -24,7 +24,7 @@
 				{% endfor %}  
 				<li class="nav-item col navFont">
 					<div class="navComElem navbar-dark">
-						<form action="{{ path ('admin/info') }}">
+						<form method="GET" action="{{ path ('info/index') }}">
                        		<input type="submit" class="btnAdmin" value="Info">
 						</form>
 					</div>

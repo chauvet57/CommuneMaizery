@@ -14,11 +14,10 @@ class TelephoneType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Village', EntityType::class,[
-                'class' => Telephone::class,
-                'choice_label' => 'Village'
+            ->add('Village',TextType::class,[
+                'disabled' => true
             ])
-            ->add('numeroTelephone', TextType::class)
+            ->add('numeroTelephone',TextType::class)
         ;
     }
 

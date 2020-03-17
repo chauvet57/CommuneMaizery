@@ -1,0 +1,19 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+
+<div class="container mt-4">
+
+<h1>Modifier le téléphone</h1>
+
+{{ form_start(form) }}
+    <div class="col option">{{ form_row(form.Village)}}</div>
+    <div class="col option">{{ form_row(form.numeroTelephone)}}</div>
+    <div class="form-group">
+         <button class="btnValide ml-3">{{ button| default('Valider') }}</button>
+    </div>
+{{ form_end(form) }}
+
+</div>
+
+{% endblock %}

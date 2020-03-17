@@ -22,22 +22,22 @@ class Horaire
     private $Jour;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $heureMatinOuverture;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $heureMatinFermeture;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $heureApresMidiOuverture;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $heureApresMidiFermeture;
 
@@ -58,31 +58,31 @@ class Horaire
         return $this;
     }
 
-    public function getHeureMatinOuverture(): ?int
+    public function getHeureMatinOuverture(): ?string
     {
         return $this->heureMatinOuverture;
     }
 
-    public function setHeureMatinOuverture(?int $heureMatinOuverture): self
+    public function setHeureMatinOuverture(?string $heureMatinOuverture): self
     {
         $this->heureMatinOuverture = $heureMatinOuverture;
 
         return $this;
     }
 
-    public function getHeureMatinFermeture(): ?int
+    public function getHeureMatinFermeture(): ?string
     {
         return $this->heureMatinFermeture;
     }
 
-    public function setHeureMatinFermeture(?int $heureMatinFermeture): self
+    public function setHeureMatinFermeture(?string $heureMatinFermeture): self
     {
         $this->heureMatinFermeture = $heureMatinFermeture;
 
         return $this;
     }
 
-    public function getHeureApresMidiOuverture(): ?int
+    public function getHeureApresMidiOuverture(): ?string
     {
         return $this->heureApresMidiOuverture;
     }
@@ -94,12 +94,12 @@ class Horaire
         return $this;
     }
 
-    public function getHeureApresMidiFermeture(): ?int
+    public function getHeureApresMidiFermeture(): ?string
     {
         return $this->heureApresMidiFermeture;
     }
 
-    public function setHeureApresMidiFermeture(?int $heureApresMidiFermeture): self
+    public function setHeureApresMidiFermeture(?string $heureApresMidiFermeture): self
     {
         $this->heureApresMidiFermeture = $heureApresMidiFermeture;
 

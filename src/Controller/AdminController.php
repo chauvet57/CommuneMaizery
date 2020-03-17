@@ -11,6 +11,7 @@ use App\Form\ActiviteType;
 use App\Form\TelephoneType;
 use App\Repository\TypeRepository;
 use App\Repository\ActiviteRepository;
+use App\Repository\TelephoneRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,11 +25,13 @@ class AdminController extends AbstractController
    */
     private $repository;
     private $activiteType;
+    private $telephones;
 
-    public function __construct(ActiviteRepository $repository, TypeRepository $activiteType ,EntityManagerInterface $em)
+    public function __construct(TelephoneRepository $telephones,ActiviteRepository $repository, TypeRepository $activiteType ,EntityManagerInterface $em)
     {
         $this->repository = $repository;
         $this->activiteType = $activiteType;
+        $this->telephones = $telephones;
         $this->em = $em;
     }
 
@@ -108,39 +111,6 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('index');
     }
 
-     /**
-     * @Route("admin/info", name="admin/info")
-     * @return Response
-     */
-    public function info(Request $request): Response
-    {
-        $telephone = new Telephone();
-        $horaire = new Horaire();
-
-        $form = $this->createForm(TelephoneType::class, $telephone);
-        $formHoraire = $this->createForm(HoraireType::class,$horaire);
-
-        $form -> handleRequest($request);
-        $formHoraire -> handleRequest($request);
- 
-        if($form->isSubmitted() && $form ->isValid() ){
-            //$this->em->persist($telephone);
-            //$this->em->flush();
-            //$this->addFlash('success','Modifié avec succès');
-            return $this->redirect('info');
-        }
-        if($formHoraire->isSubmitted() && $formHoraire ->isValid() ){
-            //$this->em->persist($horaire);
-            //$this->em->flush();
-            //$this->addFlash('success','Modifié avec succès');
-            return $this->redirect('info');
-        }
-        
-        return $this->render('admin/info.html.twig',[
-            'form' =>$form->createView(),
-            'formHoraire' =>$formHoraire->createView()
-        ]);
-    }
 
 /**
      * @Route("/admin/{type}", name="admin.type",methods="GET|POST")
@@ -150,30 +120,30 @@ class AdminController extends AbstractController
      */
     public function trierType(){
 
-if ($_GET["_method"] == 1) {
-    $type = $this->activiteType->findAll();
-    $activites = $this->repository->findAllActualite();
-    return $this->render( 'admin/index.html.twig',[
-        'types' => $type,
-        'activites' => $activites
-        ]);
-}
-if ($_GET["_method"] == 2) {
-    $type = $this->activiteType->findAll();
-    $activites = $this->repository->findAllEvenement();
-    return $this->render( 'admin/index.html.twig',[
-        'types' => $type,
-        'activites' => $activites
-        ]);
-}
-if ($_GET["_method"] == 3) {
-    $type = $this->activiteType->findAll();
-    $activites = $this->repository->findAllEcole();
-    return $this->render( 'admin/index.html.twig',[
-        'types' => $type,
-        'activites' => $activites
-        ]);
-}
+        if ($_GET["_method"] == 1) {
+            $type = $this->activiteType->findAll();
+            $activites = $this->repository->findAllActualite();
+            return $this->render( 'admin/index.html.twig',[
+                'types' => $type,
+                'activites' => $activites
+                ]);
+        }
+        if ($_GET["_method"] == 2) {
+            $type = $this->activiteType->findAll();
+            $activites = $this->repository->findAllEvenement();
+            return $this->render( 'admin/index.html.twig',[
+                'types' => $type,
+                'activites' => $activites
+                ]);
+        }
+        if ($_GET["_method"] == 3) {
+            $type = $this->activiteType->findAll();
+            $activites = $this->repository->findAllEcole();
+            return $this->render( 'admin/index.html.twig',[
+                'types' => $type,
+                'activites' => $activites
+                ]);
+        }
 
     }
 
