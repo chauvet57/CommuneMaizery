@@ -9,6 +9,36 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Horaire
 {
+
+    const HEURE_MATIN = [
+        'Fermer' => 'Fermer',
+        '8 h' =>'8 h',
+        '8 h 30'=> '8 h 30',
+        '9 h' =>'9 h',
+        '9 h 30'=> '9 h 30',
+        '10 h' => '10 h',
+        '10 h 30'=> '10 h 30',
+        '11 h' => '11 h',
+        '11 h 30'=> '11 h 30',
+        '12 h' => '12 h'
+    ];
+    const HEURE_AP_MIDI = [
+        'Fermer' => 'Fermer',
+        '13 h' =>'13 h',
+        '13 h 30'=> '13 h 30',
+        '14 h' =>'14 h',
+        '14 h 30'=> '14 h 30',
+        '15 h' =>'15 h',
+        '15 h 30'=> '15 h 30',
+        '16 h' => '16 h',
+        '16 h 30'=> '16 h 30',
+        '17 h' => '17 h',
+        '17 h 30'=> '17 h 30',
+        '18 h' => '18h',
+        '18 h 30'=> '18 h 30',
+        '19 h' => '19 h'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -87,7 +117,7 @@ class Horaire
         return $this->heureApresMidiOuverture;
     }
 
-    public function setHeureApresMidiOuverture(?int $heureApresMidiOuverture): self
+    public function setHeureApresMidiOuverture(?string $heureApresMidiOuverture): self
     {
         $this->heureApresMidiOuverture = $heureApresMidiOuverture;
 

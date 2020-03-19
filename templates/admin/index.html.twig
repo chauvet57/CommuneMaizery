@@ -20,15 +20,15 @@
                 </div>
             </div>
         </div>
-    </div>
+    
     {% for message in app.flashes('success') %}
-        <div class="container ">
-            <div class="alert alert-success">
+        <div class="alert alert-success container col-5">
+				<div class="message-success">
                 {{ message }}
             </div>
         </div>
     {% endfor %}
-
+    </div>
     <table class="table table-striped container">
         <thead>
             <tr>

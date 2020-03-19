@@ -2,13 +2,19 @@
 
 namespace App\Entity;
 
+use App\Entity\Activite;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ActiviteRepository")
+ * @Vich\Uploadable
  */
 class Activite
 {
+  
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -37,15 +43,29 @@ class Activite
     private $Date_fin;
 
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Fichier_image;
+    private $photoFile;
+
+    /**
+     * @var File|null
+     * 
+     * @Vich\UploadableField(mapping="activite_image", fileNameProperty="photoFile")
+     */
+    private $ImageFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="activites")
      * @ORM\JoinColumn(nullable=false)
      */
     private $Type;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \Datetime|null
+     */
+    private $updated_at;
 
     public function getId(): ?int
     {
@@ -99,15 +119,40 @@ class Activite
 
         return $this;
     }
-
-    public function getFichierImage(): ?string
+    /**
+     * @return null|File
+     */
+    public function getImageFile(): ?File
     {
-        return $this->Fichier_image;
+        return $this->ImageFile;
     }
-
-    public function setFichierImage(?string $Fichier_image): self
+    /**
+     * @param null|File $imageFile
+     * @return Activite
+     */
+    public function setImageFile(?File $ImageFile): Activite
     {
-        $this->Fichier_image = $Fichier_image;
+        $this->ImageFile = $ImageFile;
+        if($this->ImageFile instanceof UploadedFile){
+            $this->updated_at = new \DateTime('now');
+        }
+
+        return $this;
+    }
+    /**
+     * @return null|string
+     */
+    public function getphotoFile(): ?string
+    {
+        return $this->photoFile;
+    }
+    /**
+     * @param null|string $photoFile
+     * @return Activite
+     */
+    public function setphotoFile(?string $photoFile): Activite
+    {
+        $this->photoFile = $photoFile;
 
         return $this;
     }
@@ -120,6 +165,18 @@ class Activite
     public function setType(?Type $Type): self
     {
         $this->Type = $Type;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }

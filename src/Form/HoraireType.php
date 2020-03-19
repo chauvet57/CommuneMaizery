@@ -19,14 +19,17 @@ class HoraireType extends AbstractType
                 'disabled' => true
             ])
             ->add('heureMatinOuverture',ChoiceType::class,[
-                'choices' => [
-                    '8' => '8',
-                    '8 h 30' =>' 8 h 30'
-                ]
-            ])
-            ->add('heureMatinFermeture',TextType::class)
-            ->add('heureApresMidiOuverture',TextType::class)
-            ->add('heureApresMidiFermeture',TextType::class)
+                'choices'=> $this->getChoicesMatin()
+                ] )
+            ->add('heureMatinFermeture',ChoiceType::class,[
+                'choices'=> $this->getChoicesMatin()
+                ] )
+            ->add('heureApresMidiOuverture',ChoiceType::class,[
+                'choices'=> $this->getChoicesApMidi()
+                ] )
+            ->add('heureApresMidiFermeture',ChoiceType::class,[
+                'choices'=> $this->getChoicesApMidi()
+                ] )
         ;
     }
 
@@ -35,5 +38,24 @@ class HoraireType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Horaire::class,
         ]);
+    }
+
+    private function getChoicesMatin()
+    {
+        $choices = Horaire::HEURE_MATIN;
+        $output = [];
+        foreach($choices as $k => $v){
+            $output[$v] = $k;
+        }
+        return $output;
+    }
+    private function getChoicesApMidi()
+    {
+        $choices = Horaire::HEURE_AP_MIDI;
+        $output = [];
+        foreach($choices as $k => $v){
+            $output[$v] = $k;
+        }
+        return $output;
     }
 }

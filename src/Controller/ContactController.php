@@ -8,6 +8,8 @@ use App\Entity\NewLetter;
 use App\Form\ContactType;
 use App\Form\NewLetterType;
 use Symfony\Component\Mime\Email;
+use App\Repository\HoraireRepository;
+use App\Repository\TelephoneRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,8 +31,11 @@ public function __construct(Environment $renderer,EntityManagerInterface $em){
      * @Route("/contact", name="contact")
      * @return Response
      */
-    public function index(Request $request,MailerInterface $mailer): Response
+    public function index(Request $request,MailerInterface $mailer,HoraireRepository $horaire,TelephoneRepository $telephone): Response
     {
+        $telephones = $telephone->findAll();
+        $horaires = $horaire->findAll();
+
         $newLetter = new NewLetter();
         $contact = new Contact();
 
@@ -46,16 +51,13 @@ public function __construct(Environment $renderer,EntityManagerInterface $em){
             $this->addFlash('success','Vous etes inscrit a la newletter');
             return $this->redirectToRoute('contact');
         }
-
-
             if ($form->isSubmitted() && $form->isValid()) {
-
                 
             $contact = $form->getData();
 
             $email = (new TemplatedEmail())
-                ->from('hello@example.com')
-                ->to('hello@example.com')
+                ->from($contact->getEmail())
+                ->to('colligny.maizery@gmail.com')
                 ->subject('')
                 ->htmlTemplate('modele/mail.html.twig')
                 ->context([
@@ -69,9 +71,10 @@ public function __construct(Environment $renderer,EntityManagerInterface $em){
         
         }
         
-
         return $this->render('pages/contact.html.twig',[
             'current_menu' => 'contact',
+            'telephones' => $telephones,
+            'horaires' => $horaires,
             'form' => $form->createView(),
             'formLetter' => $formLetter->createView()
         ]);

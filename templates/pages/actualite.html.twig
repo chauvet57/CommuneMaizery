@@ -8,6 +8,39 @@
 		<br>
 		{% include 'navbar.html.twig' %}
 <br>
-
-
+<div class="container col-11">
+<div class="row">
+{% for actualite in actualites %}
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-style m-1">
+    <div class="card-title">
+        <div class="text-center">
+			<div class="form-group message-success" >
+                <div class="row">
+                    <div class="container col ">
+                        <div class="mt-4"><h1>{{ actualite.Titre }}</h1></div>
+                        <div class="mt-4">{{ actualite.Datedebut|date('d/m/Y') }}</div>
+						{% if actualite.Datefin|date('d/m/Y') > actualite.Datedebut|date('d/m/Y') %}
+						<div>{{ actualite.Datefin|date('d/m/Y') }}</div>
+						{% endif %}
+                    </div>
+                    <div class="container col">
+                    
+                        <div><img src="/images/activites/{{ actualite.photoFile }}" class="img-card" alt=""></div>
+                    
+                    </div>
+                </div>
+            
+                <div class="container mt-4">
+                    <div>{{ actualite.Description }}</div>
+                </div>
+                
+            </div>
+        </div>
+   </div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
 {% endblock %}

@@ -10,11 +10,11 @@
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto col">
+			<ul class="navbar-nav mr-auto row">
                {% for type in types %} 
-				 <li class="nav-item navFont col">
+				 <li class="nav-item navFont col m-1">
 				 	<div class="navComElem navbar-dark">
-						<form method="GET"  action="{{ path ('admin.type',{type:type.Nom }) }}">
+						<form method="GET"  action="{{ path ('admin.type',{type:type.Nom }) }}" class="col">
 							<input type="hidden" name="_method" value="{{ type.id }}">
 							<input type="submit" class="btnAdmin" value="{{ type.Nom }}">
 						</form>
@@ -22,18 +22,18 @@
 				</li>
               
 				{% endfor %}  
-				<li class="nav-item col navFont">
-					<div class="navComElem navbar-dark">
-						<form method="GET" action="{{ path ('info/index') }}">
+				<li class="nav-item navFont col m-1">
+				 	<div class="navComElem navbar-dark">
+						<form method="GET" action="{{ path ('info/index') }}" class="col">
                        		<input type="submit" class="btnAdmin" value="Info">
 						</form>
 					</div>
 				</li>
 			
 			{% if app.user %}
-					<li class="nav-item col navFont">
-						<div class="navComElem navbar-dark">
-							<form action="{{ path('logout') }}">
+					<li class="nav-item navFont col m-1">
+				 	<div class="navComElem navbar-dark">
+							<form action="{{ path('logout') }}" class="col">
 								<input type="submit" class="btnAdmin" value="Se déconnecter">
 							</form>
 						</div>

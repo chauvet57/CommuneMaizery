@@ -4,9 +4,43 @@
 
 {% block body %}
 
+	
 		<br>
 		{% include 'navbar.html.twig' %}
 <br>
-
-
+<div class="container col-11">
+<div class="row">
+{% for evenement in evenements %}
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-style col m-1">
+    <div class="card-title">
+        <div class="text-center">
+			<div class="form-group message-success" >
+                <div class="row">
+                    <div class="container col ">
+                        <div class="mt-4"><h1>{{ evenement.Titre }}</h1></div>
+                        <div class="mt-4">{{ evenement.Datedebut|date('d/m/Y') }}</div>
+						{% if evenement.Datefin|date('d/m/Y') > evenement.Datedebut|date('d/m/Y') %}
+						<div>{{ evenement.Datefin|date('d/m/Y') }}</div>
+						{% endif %}
+                    </div>
+                    <div class="container col">
+                    
+                        <div><img src="/images/activites/{{ evenement.photoFile }}" class="img-card" alt=""></div>
+                    
+                    </div>
+                </div>
+            
+                <div class="container mt-4">
+                    <div>{{ evenement.Description }}</div>
+                </div>
+                
+            </div>
+        </div>
+   </div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
 {% endblock %}

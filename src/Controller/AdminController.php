@@ -62,7 +62,7 @@ class AdminController extends AbstractController
         if($form->isSubmitted() && $form ->isValid() ){
             $this->em->persist($activite);
             $this->em->flush();
-            $this->addFlash('success','Bien créer avec succès');
+            $this->addFlash('success','Activité créer avec succès');
             return $this->redirectToRoute('index');
         }
                 return $this->render('admin/new.html.twig',[
@@ -84,7 +84,7 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            $this->addFlash('success','Bien modifié avec succès');
+            $this->addFlash('success','Activité modifié avec succès');
             return $this->redirectToRoute('index');
         }
 
@@ -105,7 +105,7 @@ class AdminController extends AbstractController
         {
                 $this->em->remove($activite);
                 $this->em->flush();
-                $this->addFlash('success','Bien supprimé avec succès');
+                $this->addFlash('success','Activité supprimé avec succès');
         }
 
         return $this->redirectToRoute('index');

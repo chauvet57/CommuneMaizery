@@ -30,8 +30,9 @@ class ActiviteType extends AbstractType
             ->add('Date_fin', DateType::class,[
                 'format' => 'd-M-y'
             ])
-            ->add('Fichier_image', FileType::class,[
-                'required' => false ])
+            ->add('imageFile', FileType::class,[
+                'required' => false 
+            ])
             ->add('Type', EntityType::class,[
                 'class' => Type::class,
                 'choice_label' => 'Nom'

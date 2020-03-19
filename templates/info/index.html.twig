@@ -3,7 +3,13 @@
 {% block body %}
 
 <div class="container mt-4">
-
+    {% for message in app.flashes('success') %}
+                <div class="alert alert-success container col-5">
+                    <div class="message-success">
+                        {{ message }}
+                    </div>
+                </div>
+    {% endfor %}
 <h1>Modifier Téléphone</h1>
 
 <table class="table table-striped container">

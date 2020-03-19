@@ -55,8 +55,8 @@ public function info(Request $request){
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            $this->addFlash('success','Bien modifié avec succès');
-            return $this->redirectToRoute('info/index');
+            $this->addFlash('success','Téléphone modifié avec succès');
+            return $this->redirect('/info');
         }
 
         return $this->render( 'info/telephone.html.twig',[
@@ -76,11 +76,11 @@ public function info(Request $request){
        $form =  $this->createForm(HoraireType::class, $horaire);
        $form-> handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->em->flush();
-            $this->addFlash('success','Bien modifié avec succès');
-            return $this->redirectToRoute('info/index');
-        }
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->em->flush();
+                $this->addFlash('success','Horaire modifié avec succès');
+                return $this->redirect('/info');
+            }
 
         return $this->render( 'info/horaire.html.twig',[
             'horaire' =>$horaire,

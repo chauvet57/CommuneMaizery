@@ -4,9 +4,43 @@
 
 {% block body %}
 
+	
 		<br>
 		{% include 'navbar.html.twig' %}
 <br>
-
-
+<div class="container col-11">
+<div class="row">
+{% for ecole in ecoles %}
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-style col m-1">
+    <div class="card-title">
+        <div class="text-center">
+			<div class="form-group message-success" >
+                <div class="row">
+                    <div class="container col ">
+                        <div class="mt-4"><h1>{{ ecole.Titre }}</h1></div>
+                        <div class="mt-4">{{ ecole.Datedebut|date('d/m/Y') }}</div>
+						{% if ecole.Datefin|date('d/m/Y') > ecole.Datedebut|date('d/m/Y') %}
+						<div>{{ ecole.Datefin|date('d/m/Y') }}</div>
+						{% endif %}
+                    </div>
+                    <div class="container col">
+                    
+                        <div><img src="/images/activites/{{ ecole.photoFile }}" class="img-card" alt=""></div>
+                    
+                    </div>
+                </div>
+            
+                <div class="container mt-4">
+                    <div>{{ ecole.Description }}</div>
+                </div>
+                
+            </div>
+        </div>
+   </div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
 {% endblock %}

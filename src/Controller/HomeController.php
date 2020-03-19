@@ -19,7 +19,7 @@ class HomeController extends AbstractController
     public function index(ActiviteRepository $actualite,ActiviteRepository $ecole,ActiviteRepository $evenement): Response
     { 
         
-        $actualites = $actualite->findAllActualite();
+        $actualites = $actualite->findOneActualite();
         $ecoles = $ecole->findOneEcole();
         $evenements = $evenement->findOneEvenement();
             
@@ -34,7 +34,7 @@ class HomeController extends AbstractController
         // $content = '{"id":521583, "name":"symfony-docs", ...}'
         //$content = $response->toArray();
         // $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
-
+ 
         $parsed_json = json_decode($content);
         $temp = intval($parsed_json->{'main'}->{'temp'});
         $temp_min = intval($parsed_json->{'main'}->{'temp_min'});

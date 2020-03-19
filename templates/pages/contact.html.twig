@@ -45,18 +45,29 @@
 			<p>Mairie de Colligny-Maizery</p>
 			<p>4 rue Principale</p>
 			<p>F-57530 COLLIGNY</p>
-
+ 
 		</div>
 		<div class="col-sm">
 			<h4 class="option">CONTACTEZ-NOUS</h4>
 
 			<p class="option">Téléphone :</p>
-			<p>Colligny +33 3 87 64 53 17</p>
-			<p>Maizery + 33 3 87 64 47 28</p>
-
+				{% for Telephone in telephones %}
+					<p>{{ Telephone.Village }} : {{ Telephone.numeroTelephone }}</p>
+				{% endfor %}
+			
 			<p class="option">Heures d'ouverture :</p>
-			<p>Lundi 10h à 12h et 13h à 19h</p>
-			<p>Jeudi 9h à 12h et 14h à 19h</p>
+			{% for Horaire in horaires %}
+				{% if Horaire.heureMatinOuverture != 'Fermer' and Horaire.heureApresMidiOuverture != 'Fermer' %}
+					<p>{{ Horaire.Jour }} : {{ Horaire.heureMatinOuverture }} à {{ Horaire.heureMatinFermeture }} et {{ Horaire.heureApresMidiOuverture }} à {{ Horaire.heureApresMidiFermeture }}</p>	
+				{% endif %}
+				{% if Horaire.heureMatinOuverture != 'Fermer' and Horaire.heureApresMidiOuverture == 'Fermer' %}
+					<p>{{ Horaire.Jour }} : {{ Horaire.heureMatinOuverture }} à {{ Horaire.heureMatinFermeture }}
+				{% endif %}
+				{% if Horaire.heureMatinOuverture == 'Fermer' and Horaire.heureApresMidiOuverture != 'Fermer' %}
+					<p>{{ Horaire.Jour }} : {{ Horaire.heureApresMidiOuverture }} à {{ Horaire.heureApresMidiFermeture }}
+				{% endif %}
+			{% endfor %}
+			
 		</div>
 		<div class="col-sm">
 			<h4 class="option">ABONNEZ-VOUS!</h4>

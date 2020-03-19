@@ -4,20 +4,31 @@
     <style>
         {# here, define your CSS styles as usual #}
         .titre {
-            color: black;
-            text-align: center;
-            font-weight: bold;
             font-size: 50px;
         }
 
-        body {
-          background-color: rgb(189, 187, 187);
-         
+        .message {
+            font-size: 30px;
         }
+
+        body {
+            color: black;
+            font-weight: bold;
+            background-color: rgb(189, 187, 187);
+            text-align: center;
+        }
+
+    
+}
     </style>
 
 <body>
-   <p class="titre">Mail reçu de : {{ contact.Nom }}</p>
+   <p class="titre ">Mail reçu de : {{ contact.Nom }}</p>
+   <br>
+   <p class="message">{{ contact.Message }}</p>
+   <br>
+   <p class="message">{{ contact.Email }}</p>
+  
 </body>
    
     
